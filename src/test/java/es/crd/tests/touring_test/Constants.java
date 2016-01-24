@@ -7,6 +7,12 @@ public class Constants {
 	static final String STEP_2_EXPECTED_BM = "0";
 	static final String STEP_3_EXPECTED_POSTAL_CODE = "1000";
 	static final String STEP_4_EXPECTED_BRAND = "TACK";
+	static final String STEP_5_EXPECTED_PRICE = "25000";
+	static final String STEP_6_EXPECTED_KM = "Je roule - de 5.000 km";
+	static final String STEP_7_MAIL = "spam.me@fmail.con";
+	static final String STEP_7_EXPECTED_MIN = "526";
+	static final String STEP_7_EXPECTED_MED = "870";
+	static final String STEP_7_EXPECTED_MAX = "1463";
 
 	// General strings
 	static final String TOURING_ULR = "https://www.touring-assurances.be/auto/quick-quote/";
@@ -28,4 +34,20 @@ public class Constants {
 	static final String CLASS_ALL_BRANDS = "allbrands";
 	static final String CLASS_TACK = "TACK";
 	static final String XPATH_BRAND = "//div[@data-target='priceVat']";
+
+	// Price test strings
+	static final String NAME_PRICE = "priceVat";
+	static final String XPATH_PRICE = "//div[@data-target='formuleKm']";
+
+	// Price test strings
+	static final String NAME_KM = "F";
+	static final String XPATH_KM = "//div[@data-target='driver_email']";
+
+	// Email test strings
+	static final String NAME_EMAIL = "driver_email";
+	static final String CLASS_EMAIL = "get-tarif";
+	static final String XPATH_RC = "//div[@id='formuleRC']//h4//span";
+	static final String XPATH_RCPO = "//div[@id='formuleRC_PO']//h4//span";
+	static final String XPATH_RCFO = "//div[@id='formuleRC_FO']//h4//span";
+
 }

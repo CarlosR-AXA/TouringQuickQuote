@@ -111,6 +111,63 @@ public class SeleniumUnitTest {
 
 		elapsedTime = (System.currentTimeMillis() - timer);
 		LOGGER.info("=== Brand test took {} ms to complete ===", elapsedTime);
+
+		// ========== Step 5: Price test==========
+		timer = System.currentTimeMillis();
+
+		element = driver.findElement(By.name(Constants.NAME_PRICE));
+		element.sendKeys(Constants.STEP_5_EXPECTED_PRICE);
+		element.sendKeys(Keys.ENTER);
+
+		element = waitAndGetResultElement(By.xpath(Constants.XPATH_PRICE + Constants.XPATH_GENERIC));
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_5_EXPECTED_PRICE,
+				element.getText());
+		assertEquals(Constants.STEP_5_EXPECTED_PRICE, element.getText());
+
+		elapsedTime = (System.currentTimeMillis() - timer);
+		LOGGER.info("=== Price test took {} ms to complete ===", elapsedTime);
+
+		// ========== Step 6: KM Test==========
+		timer = System.currentTimeMillis();
+
+		element = waitAndGetResultElement(By.name(Constants.NAME_KM));
+		while (element.isDisplayed()) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+		}
+		element = waitAndGetResultElement(By.xpath(Constants.XPATH_KM + Constants.XPATH_GENERIC));
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_6_EXPECTED_KM,
+				element.getText());
+		assertEquals(Constants.STEP_6_EXPECTED_KM, element.getText());
+
+		elapsedTime = (System.currentTimeMillis() - timer);
+		LOGGER.info("=== KM test took {} ms to complete ===", elapsedTime);
+
+		// ========== Step 7: Email test==========
+		timer = System.currentTimeMillis();
+
+		element = driver.findElement(By.name(Constants.NAME_EMAIL));
+		element.sendKeys(Constants.STEP_7_MAIL);
+
+		element = waitAndGetResultElement(By.className(Constants.CLASS_EMAIL));
+		while (element.isDisplayed()) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+		}
+
+		element = waitAndGetResultElement(By.xpath(Constants.XPATH_RC));
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MIN,
+				element.getText());
+		assertEquals(Constants.STEP_7_EXPECTED_MIN, element.getText());
+		element = waitAndGetResultElement(By.xpath(Constants.XPATH_RCPO));
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MED,
+				element.getText());
+		assertEquals(Constants.STEP_7_EXPECTED_MED, element.getText());
+		element = waitAndGetResultElement(By.xpath(Constants.XPATH_RCFO));
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MAX,
+				element.getText());
+		assertEquals(Constants.STEP_7_EXPECTED_MAX, element.getText());
+
+		elapsedTime = (System.currentTimeMillis() - timer);
+		LOGGER.info("=== Email and assurance price test took {} ms to complete ===", elapsedTime);
 	}
 
 	@AfterClass
