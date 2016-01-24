@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>TestNG:  Default test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Default test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>7/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Sun Jan 24 14:31:43 CET 2016</td>
+</tr>
+<tr><td>Total time:</td><td>20 seconds (20660 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='es.crd.tests.touring_test.SeleniumTestNg.ageTest()'><b>ageTest</b><br>Test class: es.crd.tests.touring_test.SeleniumTestNg<br>Test method: Tests the age field<br/>
+<a href="#Output-899929247" onClick='toggleBox("Output-899929247", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-899929247" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-899929247">
+The expected result is "25" and we got "25".<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>es.crd.tests.touring_test.SeleniumTestNg@59a6e353</td></tr>
+<tr>
+<td title='es.crd.tests.touring_test.SeleniumTestNg.bmTest()'><b>bmTest</b><br>Test class: es.crd.tests.touring_test.SeleniumTestNg<br>Test method: Tests the bonus-malus button<br/>
+<a href="#Output-1697752980" onClick='toggleBox("Output-1697752980", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1697752980" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1697752980">
+The expected result is "0" and we got "0".<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>es.crd.tests.touring_test.SeleniumTestNg@59a6e353</td></tr>
+<tr>
+<td title='es.crd.tests.touring_test.SeleniumTestNg.brandTest()'><b>brandTest</b><br>Test class: es.crd.tests.touring_test.SeleniumTestNg<br>Test method: Tests the brand selector<br/>
+<a href="#Output-1789452565" onClick='toggleBox("Output-1789452565", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1789452565" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1789452565">
+The expected result is "TACK" and we got "TACK".<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>es.crd.tests.touring_test.SeleniumTestNg@59a6e353</td></tr>
+<tr>
+<td title='es.crd.tests.touring_test.SeleniumTestNg.emailTest()'><b>emailTest</b><br>Test class: es.crd.tests.touring_test.SeleniumTestNg<br>Test method: Tests the email field and the result page<br/>
+<a href="#Output-1508038883" onClick='toggleBox("Output-1508038883", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1508038883" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1508038883">
+The expected result is "526" and we got "526".<br/>
+The expected result is "870" and we got "870".<br/>
+The expected result is "1463" and we got "1463".<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>es.crd.tests.touring_test.SeleniumTestNg@59a6e353</td></tr>
+<tr>
+<td title='es.crd.tests.touring_test.SeleniumTestNg.kmTest()'><b>kmTest</b><br>Test class: es.crd.tests.touring_test.SeleniumTestNg<br>Test method: Tests the kilometer selector<br/>
+<a href="#Output-1119072377" onClick='toggleBox("Output-1119072377", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1119072377" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1119072377">
+The expected result is "Je roule - de 5.000 km" and we got "Je roule - de 5.000 km".<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>es.crd.tests.touring_test.SeleniumTestNg@59a6e353</td></tr>
+<tr>
+<td title='es.crd.tests.touring_test.SeleniumTestNg.postalTest()'><b>postalTest</b><br>Test class: es.crd.tests.touring_test.SeleniumTestNg<br>Test method: Tests the age postal code<br/>
+<a href="#Output-154173878" onClick='toggleBox("Output-154173878", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-154173878" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-154173878">
+The expected result is "1000" and we got "1000".<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>es.crd.tests.touring_test.SeleniumTestNg@59a6e353</td></tr>
+<tr>
+<td title='es.crd.tests.touring_test.SeleniumTestNg.priceTest()'><b>priceTest</b><br>Test class: es.crd.tests.touring_test.SeleniumTestNg<br>Test method: Tests the price field<br/>
+<a href="#Output-1081769770" onClick='toggleBox("Output-1081769770", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1081769770" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1081769770">
+The expected result is "25000" and we got "25000".<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>es.crd.tests.touring_test.SeleniumTestNg@59a6e353</td></tr>
+</table><p>
+</body>
+</html>

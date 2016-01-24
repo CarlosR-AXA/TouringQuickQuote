@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="7" passed="7">
+  <reporter-output>
+    <line>
+      <![CDATA[The expected result is "25" and we got "25".]]>
+    </line>
+    <line>
+      <![CDATA[The expected result is "0" and we got "0".]]>
+    </line>
+    <line>
+      <![CDATA[The expected result is "1000" and we got "1000".]]>
+    </line>
+    <line>
+      <![CDATA[The expected result is "TACK" and we got "TACK".]]>
+    </line>
+    <line>
+      <![CDATA[The expected result is "25000" and we got "25000".]]>
+    </line>
+    <line>
+      <![CDATA[The expected result is "Je roule - de 5.000 km" and we got "Je roule - de 5.000 km".]]>
+    </line>
+    <line>
+      <![CDATA[The expected result is "526" and we got "526".]]>
+    </line>
+    <line>
+      <![CDATA[The expected result is "870" and we got "870".]]>
+    </line>
+    <line>
+      <![CDATA[The expected result is "1463" and we got "1463".]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="20660" started-at="2016-01-24T13:31:43Z" finished-at="2016-01-24T13:32:03Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="20660" started-at="2016-01-24T13:31:43Z" finished-at="2016-01-24T13:32:03Z">
+      <class name="es.crd.tests.touring_test.SeleniumTestNg">
+        <test-method status="PASS" signature="openBrowser()[pri:0, instance:es.crd.tests.touring_test.SeleniumTestNg@59a6e353]" name="openBrowser" is-config="true" duration-ms="12359" started-at="2016-01-24T14:31:43Z" finished-at="2016-01-24T14:31:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method status="PASS" signature="ageTest()[pri:0, instance:es.crd.tests.touring_test.SeleniumTestNg@59a6e353]" name="ageTest" duration-ms="567" started-at="2016-01-24T14:31:55Z" description="Tests the age field" finished-at="2016-01-24T14:31:56Z">
+          <reporter-output>
+            <line>
+              <![CDATA[The expected result is "25" and we got "25".]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ageTest -->
+        <test-method status="PASS" signature="bmTest()[pri:0, instance:es.crd.tests.touring_test.SeleniumTestNg@59a6e353]" name="bmTest" duration-ms="1344" started-at="2016-01-24T14:31:56Z" description="Tests the bonus-malus button" depends-on-methods="es.crd.tests.touring_test.SeleniumTestNg.ageTest" finished-at="2016-01-24T14:31:57Z">
+          <reporter-output>
+            <line>
+              <![CDATA[The expected result is "0" and we got "0".]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- bmTest -->
+        <test-method status="PASS" signature="postalTest()[pri:0, instance:es.crd.tests.touring_test.SeleniumTestNg@59a6e353]" name="postalTest" duration-ms="928" started-at="2016-01-24T14:31:57Z" description="Tests the age postal code" depends-on-methods="es.crd.tests.touring_test.SeleniumTestNg.bmTest" finished-at="2016-01-24T14:31:58Z">
+          <reporter-output>
+            <line>
+              <![CDATA[The expected result is "1000" and we got "1000".]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postalTest -->
+        <test-method status="PASS" signature="brandTest()[pri:0, instance:es.crd.tests.touring_test.SeleniumTestNg@59a6e353]" name="brandTest" duration-ms="1042" started-at="2016-01-24T14:31:58Z" description="Tests the brand selector" depends-on-methods="es.crd.tests.touring_test.SeleniumTestNg.postalTest" finished-at="2016-01-24T14:31:59Z">
+          <reporter-output>
+            <line>
+              <![CDATA[The expected result is "TACK" and we got "TACK".]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- brandTest -->
+        <test-method status="PASS" signature="priceTest()[pri:0, instance:es.crd.tests.touring_test.SeleniumTestNg@59a6e353]" name="priceTest" duration-ms="768" started-at="2016-01-24T14:31:59Z" description="Tests the price field" depends-on-methods="es.crd.tests.touring_test.SeleniumTestNg.brandTest" finished-at="2016-01-24T14:32:00Z">
+          <reporter-output>
+            <line>
+              <![CDATA[The expected result is "25000" and we got "25000".]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- priceTest -->
+        <test-method status="PASS" signature="kmTest()[pri:0, instance:es.crd.tests.touring_test.SeleniumTestNg@59a6e353]" name="kmTest" duration-ms="768" started-at="2016-01-24T14:32:00Z" description="Tests the kilometer selector" depends-on-methods="es.crd.tests.touring_test.SeleniumTestNg.priceTest" finished-at="2016-01-24T14:32:01Z">
+          <reporter-output>
+            <line>
+              <![CDATA[The expected result is "Je roule - de 5.000 km" and we got "Je roule - de 5.000 km".]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- kmTest -->
+        <test-method status="PASS" signature="emailTest()[pri:0, instance:es.crd.tests.touring_test.SeleniumTestNg@59a6e353]" name="emailTest" duration-ms="2476" started-at="2016-01-24T14:32:01Z" description="Tests the email field and the result page" depends-on-methods="es.crd.tests.touring_test.SeleniumTestNg.kmTest" finished-at="2016-01-24T14:32:03Z">
+          <reporter-output>
+            <line>
+              <![CDATA[The expected result is "526" and we got "526".]]>
+            </line>
+            <line>
+              <![CDATA[The expected result is "870" and we got "870".]]>
+            </line>
+            <line>
+              <![CDATA[The expected result is "1463" and we got "1463".]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- emailTest -->
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:es.crd.tests.touring_test.SeleniumTestNg@59a6e353]" name="closeBrowser" is-config="true" duration-ms="391" started-at="2016-01-24T14:32:03Z" finished-at="2016-01-24T14:32:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- es.crd.tests.touring_test.SeleniumTestNg -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
