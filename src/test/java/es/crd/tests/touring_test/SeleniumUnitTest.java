@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -15,6 +17,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SeleniumUnitTest {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SeleniumUnitTest.class);
@@ -23,17 +26,20 @@ public class SeleniumUnitTest {
 	private long timer = 0L;
 	private long elapsedTime = 0L;
 	private TestUtils utils = new TestUtils();
-	
 
 	@BeforeClass
+	/**
+	 * openBrowser opens a new browser instance (Firefox in our case) and opens
+	 * the page to test.
+	 */
 	public static void openBrowser() {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.get(Constants.TOURING_ULR);
 	}
-	
+
 	@Test
-	public void quickQuoteTest() {
+	public void step1_ageTest() {
 		// ========== Step 1: Age test==========
 		timer = System.currentTimeMillis();
 
@@ -42,13 +48,15 @@ public class SeleniumUnitTest {
 		element.sendKeys(Keys.ENTER);
 
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_AGE + Constants.XPATH_GENERIC), driver);
-		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_1_EXPECTED_AGE,
-				element.getText());
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_1_EXPECTED_AGE, element.getText());
 		assertEquals(Constants.STEP_1_EXPECTED_AGE, element.getText());
 
 		elapsedTime = (System.currentTimeMillis() - timer);
 		LOGGER.info("=== Age test took {} ms to complete ===", elapsedTime);
+	}
 
+	@Test
+	public void step2_bmTest() {
 		// ========== Step 2: BM Test==========
 		timer = System.currentTimeMillis();
 
@@ -57,13 +65,15 @@ public class SeleniumUnitTest {
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		}
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_BM + Constants.XPATH_GENERIC), driver);
-		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_2_EXPECTED_BM,
-				element.getText());
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_2_EXPECTED_BM, element.getText());
 		assertEquals(Constants.STEP_2_EXPECTED_BM, element.getText());
 
 		elapsedTime = (System.currentTimeMillis() - timer);
 		LOGGER.info("=== BM test took {} ms to complete ===", elapsedTime);
+	}
 
+	@Test
+	public void step3_postalCodeTest() {
 		// ========== Step 3: Postal code Test==========
 		timer = System.currentTimeMillis();
 
@@ -72,13 +82,15 @@ public class SeleniumUnitTest {
 		element.sendKeys(Keys.ENTER);
 
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_POSTAL_CODE + Constants.XPATH_GENERIC), driver);
-		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_3_EXPECTED_POSTAL_CODE,
-				element.getText());
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_3_EXPECTED_POSTAL_CODE, element.getText());
 		assertEquals(Constants.STEP_3_EXPECTED_POSTAL_CODE, element.getText());
 
 		elapsedTime = (System.currentTimeMillis() - timer);
 		LOGGER.info("=== Postal code test took {} ms to complete ===", elapsedTime);
+	}
 
+	@Test
+	public void step4_brandTest() {
 		// ========== Step 4: Brand Test==========
 		timer = System.currentTimeMillis();
 
@@ -93,13 +105,15 @@ public class SeleniumUnitTest {
 		}
 
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_BRAND + Constants.XPATH_GENERIC), driver);
-		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_4_EXPECTED_BRAND,
-				element.getText());
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_4_EXPECTED_BRAND, element.getText());
 		assertEquals(Constants.STEP_4_EXPECTED_BRAND, element.getText());
 
 		elapsedTime = (System.currentTimeMillis() - timer);
 		LOGGER.info("=== Brand test took {} ms to complete ===", elapsedTime);
+	}
 
+	@Test
+	public void step5_priceTest() {
 		// ========== Step 5: Price test==========
 		timer = System.currentTimeMillis();
 
@@ -108,13 +122,15 @@ public class SeleniumUnitTest {
 		element.sendKeys(Keys.ENTER);
 
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_PRICE + Constants.XPATH_GENERIC), driver);
-		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_5_EXPECTED_PRICE,
-				element.getText());
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_5_EXPECTED_PRICE, element.getText());
 		assertEquals(Constants.STEP_5_EXPECTED_PRICE, element.getText());
 
 		elapsedTime = (System.currentTimeMillis() - timer);
 		LOGGER.info("=== Price test took {} ms to complete ===", elapsedTime);
+	}
 
+	@Test
+	public void step6_kmTest() {
 		// ========== Step 6: KM Test==========
 		timer = System.currentTimeMillis();
 
@@ -123,14 +139,16 @@ public class SeleniumUnitTest {
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		}
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_KM + Constants.XPATH_GENERIC), driver);
-		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_6_EXPECTED_KM,
-				element.getText());
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_6_EXPECTED_KM, element.getText());
 		assertEquals(Constants.STEP_6_EXPECTED_KM, element.getText());
 
 		elapsedTime = (System.currentTimeMillis() - timer);
 		LOGGER.info("=== KM test took {} ms to complete ===", elapsedTime);
+	}
 
-		// ========== Step 7: Email test==========
+	@Test
+	public void step7_emailResultTest() {
+		// ========== Step 7: Email and final result test==========
 		timer = System.currentTimeMillis();
 
 		element = driver.findElement(By.name(Constants.NAME_EMAIL));
@@ -142,20 +160,17 @@ public class SeleniumUnitTest {
 		}
 
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_RC), driver);
-		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MIN,
-				element.getText());
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MIN, element.getText());
 		assertEquals(Constants.STEP_7_EXPECTED_MIN, element.getText());
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_RCPO), driver);
-		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MED,
-				element.getText());
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MED, element.getText());
 		assertEquals(Constants.STEP_7_EXPECTED_MED, element.getText());
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_RCFO), driver);
-		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MAX,
-				element.getText());
+		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MAX, element.getText());
 		assertEquals(Constants.STEP_7_EXPECTED_MAX, element.getText());
 
 		elapsedTime = (System.currentTimeMillis() - timer);
-		LOGGER.info("=== Email and assurance price test took {} ms to complete ===", elapsedTime);
+		LOGGER.info("=== Email and assurance price test took {} ms to complete===", elapsedTime);
 	}
 
 	@AfterClass

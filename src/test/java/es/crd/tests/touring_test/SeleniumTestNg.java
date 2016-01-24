@@ -35,8 +35,7 @@ public class SeleniumTestNg {
 
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_AGE + Constants.XPATH_GENERIC), driver);
 
-		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_1_EXPECTED_AGE,
-				element.getText()));
+		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_1_EXPECTED_AGE, element.getText()));
 		Assert.assertEquals(Constants.STEP_1_EXPECTED_AGE, element.getText());
 	}
 
@@ -47,8 +46,7 @@ public class SeleniumTestNg {
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		}
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_BM + Constants.XPATH_GENERIC), driver);
-		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_2_EXPECTED_BM,
-				element.getText()));
+		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_2_EXPECTED_BM, element.getText()));
 		Assert.assertEquals(Constants.STEP_2_EXPECTED_BM, element.getText());
 	}
 
@@ -58,10 +56,8 @@ public class SeleniumTestNg {
 		element.sendKeys(Constants.STEP_3_EXPECTED_POSTAL_CODE);
 		element.sendKeys(Keys.ENTER);
 
-		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_POSTAL_CODE + Constants.XPATH_GENERIC),
-				driver);
-		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".",
-				Constants.STEP_3_EXPECTED_POSTAL_CODE, element.getText()));
+		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_POSTAL_CODE + Constants.XPATH_GENERIC), driver);
+		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_3_EXPECTED_POSTAL_CODE, element.getText()));
 		Assert.assertEquals(Constants.STEP_3_EXPECTED_POSTAL_CODE, element.getText());
 	}
 
@@ -78,8 +74,7 @@ public class SeleniumTestNg {
 		}
 
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_BRAND + Constants.XPATH_GENERIC), driver);
-		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_4_EXPECTED_BRAND,
-				element.getText()));
+		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_4_EXPECTED_BRAND, element.getText()));
 		Assert.assertEquals(Constants.STEP_4_EXPECTED_BRAND, element.getText());
 	}
 
@@ -90,8 +85,7 @@ public class SeleniumTestNg {
 		element.sendKeys(Keys.ENTER);
 
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_PRICE + Constants.XPATH_GENERIC), driver);
-		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_5_EXPECTED_PRICE,
-				element.getText()));
+		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_5_EXPECTED_PRICE, element.getText()));
 		Assert.assertEquals(Constants.STEP_5_EXPECTED_PRICE, element.getText());
 	}
 
@@ -102,8 +96,7 @@ public class SeleniumTestNg {
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		}
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_KM + Constants.XPATH_GENERIC), driver);
-		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_6_EXPECTED_KM,
-				element.getText()));
+		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_6_EXPECTED_KM, element.getText()));
 		Assert.assertEquals(Constants.STEP_6_EXPECTED_KM, element.getText());
 	}
 
@@ -118,16 +111,13 @@ public class SeleniumTestNg {
 		}
 
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_RC), driver);
-		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_7_EXPECTED_MIN,
-				element.getText()));
+		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_7_EXPECTED_MIN, element.getText()));
 		Assert.assertEquals(Constants.STEP_7_EXPECTED_MIN, element.getText());
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_RCPO), driver);
-		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_7_EXPECTED_MED,
-				element.getText()));
+		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_7_EXPECTED_MED, element.getText()));
 		Assert.assertEquals(Constants.STEP_7_EXPECTED_MED, element.getText());
 		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_RCFO), driver);
-		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_7_EXPECTED_MAX,
-				element.getText()));
+		Reporter.log(String.format("The expected result is \"%s\" and we got \"%s\".", Constants.STEP_7_EXPECTED_MAX, element.getText()));
 		Assert.assertEquals(Constants.STEP_7_EXPECTED_MAX, element.getText());
 	}
 
