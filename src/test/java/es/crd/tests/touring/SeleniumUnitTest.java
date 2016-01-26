@@ -1,4 +1,4 @@
-package es.crd.tests.touring_test;
+package es.crd.tests.touring;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,10 +7,9 @@ import java.util.concurrent.TimeUnit;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.runners.MethodSorters;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -23,15 +22,16 @@ public class SeleniumUnitTest {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SeleniumUnitTest.class);
 	private static FirefoxDriver driver = null;
 	private WebElement element = null;
+	private WebElement availableElement = null;
 	private long timer = 0L;
 	private long elapsedTime = 0L;
-	private TestUtils utils = new TestUtils();
+	private final TestUtils utils = new TestUtils();
 
-	@BeforeClass
 	/**
-	 * openBrowser opens a new browser instance (Firefox in our case) and opens
-	 * the page to test.
+	 * Opens a new browser instance (Firefox in our case) to the page we want to
+	 * test.
 	 */
+	@BeforeClass
 	public static void openBrowser() {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -44,10 +44,11 @@ public class SeleniumUnitTest {
 		timer = System.currentTimeMillis();
 
 		element = driver.findElement(By.name(Constants.NAME_AGE));
-		element.sendKeys(Constants.STEP_1_EXPECTED_AGE);
-		element.sendKeys(Keys.ENTER);
+		availableElement = utils.waitAvailabilityOf(element, driver);
+		availableElement.sendKeys(Constants.STEP_1_EXPECTED_AGE);
+		availableElement.sendKeys(Keys.RETURN);
 
-		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_AGE + Constants.XPATH_GENERIC), driver);
+		element = utils.waitVisibilityOf(By.xpath(Constants.XPATH_AGE + Constants.XPATH_GENERIC), driver);
 		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_1_EXPECTED_AGE, element.getText());
 		assertEquals(Constants.STEP_1_EXPECTED_AGE, element.getText());
 
@@ -60,11 +61,11 @@ public class SeleniumUnitTest {
 		// ========== Step 2: BM Test==========
 		timer = System.currentTimeMillis();
 
-		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_BUTTON), driver);
-		while (element.isDisplayed()) {
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-		}
-		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_BM + Constants.XPATH_GENERIC), driver);
+		element = utils.waitVisibilityOf(By.xpath(Constants.XPATH_BUTTON), driver);
+		availableElement = utils.waitAvailabilityOf(element, driver);
+		availableElement.click();
+
+		element = utils.waitVisibilityOf(By.xpath(Constants.XPATH_BM + Constants.XPATH_GENERIC), driver);
 		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_2_EXPECTED_BM, element.getText());
 		assertEquals(Constants.STEP_2_EXPECTED_BM, element.getText());
 
@@ -77,11 +78,12 @@ public class SeleniumUnitTest {
 		// ========== Step 3: Postal code Test==========
 		timer = System.currentTimeMillis();
 
-		element = utils.waitAndGetResultElement(By.name(Constants.NAME_POSTAL_CODE), driver);
-		element.sendKeys(Constants.STEP_3_EXPECTED_POSTAL_CODE);
-		element.sendKeys(Keys.ENTER);
+		element = utils.waitVisibilityOf(By.name(Constants.NAME_POSTAL_CODE), driver);
+		availableElement = utils.waitAvailabilityOf(element, driver);
+		availableElement.sendKeys(Constants.STEP_3_EXPECTED_POSTAL_CODE);
+		availableElement.sendKeys(Keys.RETURN);
 
-		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_POSTAL_CODE + Constants.XPATH_GENERIC), driver);
+		element = utils.waitVisibilityOf(By.xpath(Constants.XPATH_POSTAL_CODE + Constants.XPATH_GENERIC), driver);
 		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_3_EXPECTED_POSTAL_CODE, element.getText());
 		assertEquals(Constants.STEP_3_EXPECTED_POSTAL_CODE, element.getText());
 
@@ -94,17 +96,15 @@ public class SeleniumUnitTest {
 		// ========== Step 4: Brand Test==========
 		timer = System.currentTimeMillis();
 
-		element = utils.waitAndGetResultElement(By.className(Constants.CLASS_ALL_BRANDS), driver);
-		while (element.isDisplayed()) {
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-		}
+		element = utils.waitVisibilityOf(By.className(Constants.CLASS_ALL_BRANDS), driver);
+		availableElement = utils.waitAvailabilityOf(element, driver);
+		availableElement.click();
 
-		element = utils.waitAndGetResultElement(By.className(Constants.CLASS_TACK), driver);
-		while (element.isDisplayed()) {
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-		}
+		element = utils.waitVisibilityOf(By.className(Constants.CLASS_TACK), driver);
+		availableElement = utils.waitAvailabilityOf(element, driver);
+		availableElement.click();
 
-		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_BRAND + Constants.XPATH_GENERIC), driver);
+		element = utils.waitVisibilityOf(By.xpath(Constants.XPATH_BRAND + Constants.XPATH_GENERIC), driver);
 		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_4_EXPECTED_BRAND, element.getText());
 		assertEquals(Constants.STEP_4_EXPECTED_BRAND, element.getText());
 
@@ -118,10 +118,11 @@ public class SeleniumUnitTest {
 		timer = System.currentTimeMillis();
 
 		element = driver.findElement(By.name(Constants.NAME_PRICE));
-		element.sendKeys(Constants.STEP_5_EXPECTED_PRICE);
-		element.sendKeys(Keys.ENTER);
+		availableElement = utils.waitAvailabilityOf(element, driver);
+		availableElement.sendKeys(Constants.STEP_5_EXPECTED_PRICE);
+		availableElement.sendKeys(Keys.RETURN);
 
-		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_PRICE + Constants.XPATH_GENERIC), driver);
+		element = utils.waitVisibilityOf(By.xpath(Constants.XPATH_PRICE + Constants.XPATH_GENERIC), driver);
 		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_5_EXPECTED_PRICE, element.getText());
 		assertEquals(Constants.STEP_5_EXPECTED_PRICE, element.getText());
 
@@ -134,11 +135,11 @@ public class SeleniumUnitTest {
 		// ========== Step 6: KM Test==========
 		timer = System.currentTimeMillis();
 
-		element = utils.waitAndGetResultElement(By.name(Constants.NAME_KM), driver);
-		while (element.isDisplayed()) {
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-		}
-		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_KM + Constants.XPATH_GENERIC), driver);
+		element = utils.waitVisibilityOf(By.name(Constants.NAME_KM), driver);
+		availableElement = utils.waitAvailabilityOf(element, driver);
+		availableElement.click();
+
+		element = utils.waitVisibilityOf(By.xpath(Constants.XPATH_KM + Constants.XPATH_GENERIC), driver);
 		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_6_EXPECTED_KM, element.getText());
 		assertEquals(Constants.STEP_6_EXPECTED_KM, element.getText());
 
@@ -152,20 +153,20 @@ public class SeleniumUnitTest {
 		timer = System.currentTimeMillis();
 
 		element = driver.findElement(By.name(Constants.NAME_EMAIL));
-		element.sendKeys(Constants.STEP_7_MAIL);
+		availableElement = utils.waitAvailabilityOf(element, driver);
+		availableElement.sendKeys(Constants.STEP_7_MAIL);
 
-		element = utils.waitAndGetResultElement(By.className(Constants.CLASS_EMAIL), driver);
-		while (element.isDisplayed()) {
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-		}
+		element = utils.waitVisibilityOf(By.className(Constants.CLASS_EMAIL), driver);
+		availableElement = utils.waitAvailabilityOf(element, driver);
+		availableElement.click();
 
-		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_RC), driver);
+		element = utils.waitVisibilityOf(By.xpath(Constants.XPATH_RC), driver);
 		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MIN, element.getText());
 		assertEquals(Constants.STEP_7_EXPECTED_MIN, element.getText());
-		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_RCPO), driver);
+		element = utils.waitVisibilityOf(By.xpath(Constants.XPATH_RCPO), driver);
 		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MED, element.getText());
 		assertEquals(Constants.STEP_7_EXPECTED_MED, element.getText());
-		element = utils.waitAndGetResultElement(By.xpath(Constants.XPATH_RCFO), driver);
+		element = utils.waitVisibilityOf(By.xpath(Constants.XPATH_RCFO), driver);
 		LOGGER.info("The expected result is \"{}\" and we got \"{}\".", Constants.STEP_7_EXPECTED_MAX, element.getText());
 		assertEquals(Constants.STEP_7_EXPECTED_MAX, element.getText());
 

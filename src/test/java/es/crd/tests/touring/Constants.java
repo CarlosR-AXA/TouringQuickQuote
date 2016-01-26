@@ -1,4 +1,4 @@
-package es.crd.tests.touring_test;
+package es.crd.tests.touring;
 
 public class Constants {
 
@@ -9,7 +9,7 @@ public class Constants {
 	static final String STEP_4_EXPECTED_BRAND = "TACK";
 	static final String STEP_5_EXPECTED_PRICE = "25000";
 	static final String STEP_6_EXPECTED_KM = "Je roule - de 5.000 km";
-	static final String STEP_7_MAIL = "spam.me@fmail.con";
+	static final String STEP_7_MAIL = "king.arthur@spamalot.com";
 	static final String STEP_7_EXPECTED_MIN = "526";
 	static final String STEP_7_EXPECTED_MED = "870";
 	static final String STEP_7_EXPECTED_MAX = "1463";
