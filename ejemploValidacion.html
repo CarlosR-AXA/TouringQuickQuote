@@ -22,6 +22,10 @@
 
   $( document ).ready(function() {
     
+    $("#form_codigo_postal_custom").on("invalid", function(event) {
+      event.preventDefault();
+    });
+    
     $("#input_codigo_postal_custom").on("invalid", function(event) {
       event.preventDefault();
     });
