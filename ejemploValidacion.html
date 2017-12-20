@@ -1,0 +1,201 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Validacion HTML5 Demo</title>
+  <meta name="description" content="The HTML5 validation demo">
+  <meta name="author" content="Altran">
+
+  <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" >
+
+  $( document ).ready(function() {
+    
+    $("#input_codigo_postal_custom").on("invalid", function(event) {
+      event.preventDefault();
+    });
+  });
+
+
+
+  // Parte de código para el primer input, el que muestra los mensajes de error nativos de chrome!!!
+  
+  function html5Validation_nativo(field, valid, errorMsg) {
+      field.setCustomValidity(valid ? "" : errorMsg);
+  
+      if (typeof field.willValidate !== "undefined") {
+          // Native browser check.
+          field.checkValidity();
+      } else {
+          // Native validation not available.
+          field.validity = field.validity || {};
+          // Set to result of validation function.
+          // field.validity.valid = LegacyValidation(field);
+          // If "invalid" events are required, trigger it here.
+      }
+  
+      if (field.validity.valid) {
+          // Remove error styles and messages.
+      } else {
+          // Style field, show error, etc
+      }
+  }
+  
+  function updateValidity_nativo(result) {
+      var field = $("#input_codigo_postal_nativo")[0];
+  
+      html5Validation_nativo(field, result, "Error en el código postal!!");
+  }
+  
+  function handleBlur_nativo() {
+      var str = $("#input_codigo_postal_nativo").val();
+  
+      if (str.length >= 4 && str.length <= 5) {
+          updateValidity_nativo(true);
+      } else {
+          updateValidity_nativo(false);
+      }
+  }
+  
+  function handleChange_nativo() {
+      updateValidity_nativo(true);
+  }
+  
+  function submitStep_nativo() {
+    var str = $("#input_codigo_postal_nativo").val();
+  
+    if (event.keyCode == 13) { 
+      if (str.length >= 4 && str.length <= 5) {
+          updateValidity_nativo(true);
+      } else {
+          updateValidity_nativo(false);
+      }
+    }
+  }
+  
+  /////////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+  
+   // Parte de código para el segundo input, el que muestra los mensajes de error estilados por nosotros!!!
+   function html5Validation_custom(field, valid, errorMsg) {
+      field.setCustomValidity(valid ? "" : errorMsg);
+  
+      if (typeof field.willValidate !== "undefined") {
+          // Native browser check.
+          field.checkValidity();
+      } else {
+          // Native validation not available.
+          field.validity = field.validity || {};
+          // Set to result of validation function.
+          // field.validity.valid = LegacyValidation(field);
+          // If "invalid" events are required, trigger it here.
+      }
+  
+  
+      if (field.validity.valid) {
+          // Remove error styles and messages.
+      } else {
+          // Style field, show error, etc
+         $("#errorDiv").html(errorMsg + " Esto sería un tooltip custom, no un console.log!!");
+      }
+  }
+  
+  function updateValidity_custom(result) {
+      var field = $("#input_codigo_postal_custom")[0];
+  
+      html5Validation_custom(field, result, "Error en el código postal!!");
+  }
+  
+  function handleBlur_custom() {
+      var str = $("#input_codigo_postal_custom").val();
+  
+      if (str.length >= 4 && str.length <= 5) {
+          updateValidity_custom(true);
+          $("#errorDiv").html("");
+      } else {
+          updateValidity_custom(false);
+      }
+  }
+  
+  function handleChange_custom() {
+      updateValidity_custom(true);
+      $("#errorDiv").html("");
+      
+      
+  }
+  
+  function submitStep_custom() {
+      var str = $("#input_codigo_postal_custom").val();
+  
+      if (str.length >= 4 && str.length <= 5) {
+          updateValidity_custom(true);
+          $("#errorDiv").html("");
+      } else {
+          updateValidity_custom(false);
+      }
+  }
+</script>
+<body>
+    
+    <h1>Test de Accesibilidad en las Validaciones HTML5</h1>
+    
+    
+    <div>
+      <h2>Validación Nativa HTML5</h2>
+      <div>Código Postal</div>
+      <div className={ this.state.isValid ? 'form-text' : 'form-text error' }>
+        <form id="form_codigo_postal_nativo" onkeydown='submitStep_nativo()' >
+          <input    placeholder="Escribe tu código postal"
+                    id="input_codigo_postal_nativo"
+                    required
+                    autocomplete="off"
+                    type="text"
+                    onblur='handleBlur_nativo()'
+                    onkeydown='handleChange_nativo()'
+          />
+        </form>  
+      </div>
+      
+      <div>
+          <a onClick='submitStep_nativo()' href="#">
+            Siguiente
+          </a>
+      </div>
+    </div>
+
+  <div>
+        <h2>Validación Personalizada HTML5 (Pendiente Validación por parte de Accesibilad)</h2>
+        <div>Código Postal</div>
+        <div className={ this.state.isValid ? 'form-text' : 'form-text error' }>
+        <form id="form_codigo_postal_custom" onSubmit='submitStep_custom()' >
+          <input    placeholder="Escribe tu código postal"
+                    id="input_codigo_postal_custom"
+                    required
+                    autocomplete="off"
+                    type="text"
+                    onblur="handleBlur_custom()"
+                    onkeydown="handleChange_custom()"
+          />
+        </form>  
+      </div>
+      
+      <div id="errorDiv"></div>
+      
+      <div>
+          <a onClick='submitStep_custom()' href="#">
+            Siguiente
+          </a>
+      </div>
+  </div>
+</body>
+</html>
