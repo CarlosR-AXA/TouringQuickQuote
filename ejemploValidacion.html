@@ -21,11 +21,6 @@
 <script type="text/javascript" >
 
   $( document ).ready(function() {
-    
-    $("#form_codigo_postal_custom").on("invalid", function(event) {
-      event.preventDefault();
-    });
-    
     $("#input_codigo_postal_custom").on("invalid", function(event) {
       event.preventDefault();
     });
@@ -181,7 +176,7 @@
         <h2>Validación Personalizada HTML5 (Pendiente Validación por parte de Accesibilad)</h2>
         <div>Código Postal</div>
         <div className={ this.state.isValid ? 'form-text' : 'form-text error' }>
-        <form id="form_codigo_postal_custom" onSubmit='submitStep_custom()' >
+        <form id="form_codigo_postal_custom" onkeydown='submitStep_custom()' >
           <input    placeholder="Escribe tu código postal"
                     id="input_codigo_postal_custom"
                     required
